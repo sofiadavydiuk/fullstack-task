@@ -1,0 +1,21 @@
+{
+  "name": "ibm-full-stack-task",
+  "version": "1.0.0",
+  "description": "IBM Full Stack Task",
+  "main": "server.js",
+  "scripts": {
+    "client": "npm run start --prefix client",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "Sofia Davydiuk",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "nodemon": "^2.0.4"
+  }
+}
