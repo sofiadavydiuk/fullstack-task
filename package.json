@@ -5,9 +5,9 @@
   "main": "server.js",
   "scripts": {
     "client": "npm run start --prefix client",
-    "start": "node server.js",
+    "test": "mocha './specs/*.spec.js'",
     "server": "nodemon server.js",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "start": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Sofia Davydiuk",
   "license": "ISC",
@@ -15,7 +15,9 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
     "concurrently": "^5.2.0",
+    "mocha": "^7.2.0",
     "nodemon": "^2.0.4"
   }
 }
