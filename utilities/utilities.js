@@ -1,5 +1,4 @@
 const findAverage = (users) => {
-  users = JSON.parse(users);
   let sumTickets = 0;
   let sumBackups = 0;
 
