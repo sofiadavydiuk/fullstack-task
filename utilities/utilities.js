@@ -1,26 +1,23 @@
 const findAverage = (users) => {
-  let sumTickets = 0;
-  let sumBackups = 0;
+  const averageScores = users.reduce(
+    ({ sumTickets, sumBackups }, user) => {
+      return {
+        sumTickets: sumTickets + user.ticketsCreated.length,
+        sumBackups: sumBackups + user.backups.length,
+      };
+    },
+    { sumTickets: 0, sumBackups: 0 }
+  );
 
-  const forEachFunction = (item, index) => {
-    sumTickets = sumTickets + users[index].ticketsCreated.length;
-    sumBackups = sumBackups + users[index].backups.length;
-  };
+  const { sumTickets, sumBackups } = averageScores;
 
-  users.forEach(forEachFunction);
-
-  const avBackups = sumBackups / users.length;
-  const avTickets = sumTickets / users.length;
-
-  const newUsers = {
+  return {
     users: users,
     calculations: {
-      averageTicketCreated: avBackups.toFixed(2),
-      averageBackupsCreated: avTickets.toFixed(2),
+      averageTicketCreated: (sumBackups / users.length).toFixed(2),
+      averageBackupsCreated: (sumTickets / users.length).toFixed(2),
     },
   };
-
-  return JSON.stringify(newUsers);
 };
 
 exports.findAverage = findAverage;

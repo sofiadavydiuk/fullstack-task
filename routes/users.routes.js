@@ -9,8 +9,8 @@ router.get("/", async (req, res) => {
   const users = fs.readFileSync(path.resolve(__dirname, "users.json"), {
     encoding: "UTF-8",
   });
-  const statistics = findAverage(users);
-  res.json(JSON.parse(statistics));
+  const usersWithStatistics = findAverage(JSON.parse(users));
+  res.json(usersWithStatistics);
 });
 
 module.exports = router;

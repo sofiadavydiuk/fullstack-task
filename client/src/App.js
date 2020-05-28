@@ -12,7 +12,7 @@ function App() {
   const [calculations, setCalculations] = useState({});
   const [sortedBy, setSortedBy] = useState("");
   const [originalUsers, setOriginalUsers] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     axios
@@ -21,7 +21,7 @@ function App() {
         setUsers(res.data.users);
         setOriginalUsers(res.data.users);
         setCalculations(res.data.calculations);
-        setLoading(false);
+        setIsLoading(false);
       })
       .catch((e) => console.error(e));
   }, []);
@@ -49,10 +49,10 @@ function App() {
         <SortButtons onSort={onSort} />
         <Filter onFilter={onFilter} />
       </div>
-      {loading && <Loader />}
+      {isLoading && <Loader />}
       {users.length ? (
         <UserList users={users} />
-      ) : loading ? null : (
+      ) : isLoading ? null : (
         <p>No Users</p>
       )}
       <Calculations calculations={calculations} />
