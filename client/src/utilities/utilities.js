@@ -1,6 +1,4 @@
-// Sort by newest and oldest data
-
-export const getSortFunc = (sortedBy) => (userA, userB) => {
+const getSortFunc = (sortedBy) => (userA, userB) => {
   let a = new Date(userA.joinDate.replace(" ", ""));
   let b = new Date(userB.joinDate.replace(" ", ""));
 
@@ -10,3 +8,9 @@ export const getSortFunc = (sortedBy) => (userA, userB) => {
     return a > b ? 1 : a < b ? -1 : 0;
   }
 };
+
+const filterByTicketsCreated = (user) => {
+  return user.ticketsCreated.length >= 5;
+};
+
+module.exports = { getSortFunc, filterByTicketsCreated };

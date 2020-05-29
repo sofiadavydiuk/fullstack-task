@@ -1,5 +1,12 @@
 const findAverage = (users) => {
-  const averageScores = users.reduce(
+  return {
+    users: users,
+    calculations: calculateAverageScores(users),
+  };
+};
+
+const calculateAverageScores = (users) => {
+  const { sumTickets, sumBackups } = users.reduce(
     ({ sumTickets, sumBackups }, user) => {
       return {
         sumTickets: sumTickets + user.ticketsCreated.length,
@@ -9,15 +16,10 @@ const findAverage = (users) => {
     { sumTickets: 0, sumBackups: 0 }
   );
 
-  const { sumTickets, sumBackups } = averageScores;
-
   return {
-    users: users,
-    calculations: {
-      averageTicketCreated: (sumBackups / users.length).toFixed(2),
-      averageBackupsCreated: (sumTickets / users.length).toFixed(2),
-    },
+    averageTicketCreated: Number((sumTickets / users.length).toFixed(2)),
+    averageBackupsCreated: Number((sumBackups / users.length).toFixed(2)),
   };
 };
 
-exports.findAverage = findAverage;
+module.exports = { calculateAverageScores, findAverage };

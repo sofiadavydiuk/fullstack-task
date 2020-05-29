@@ -18,7 +18,7 @@ const Calculations = ({ calculations }) => {
 };
 
 Calculations.propTypes = {
-  calculations: PropTypes.object.isRequired,
+  calculations: PropTypes.shape.isRequired,
 };
 
 export default Calculations;
